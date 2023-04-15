@@ -18,6 +18,15 @@ func TestReadFile(t *testing.T) {
 		require.Contains(t, got, "dos")
 	})
 
+	t.Run("it trims spaces", func(t *testing.T) {
+		t.Parallel()
+
+		got, err := ReadFile("testdata/uno-dos-spaced.txt")
+		require.NoError(t, err)
+		require.Contains(t, got, "uno")
+		require.Contains(t, got, "dos")
+	})
+
 	t.Run("it errors", func(t *testing.T) {
 		t.Parallel()
 

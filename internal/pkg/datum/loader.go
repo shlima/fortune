@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
 
 func ReadFile(filename string) (Index, error) {
@@ -16,7 +17,7 @@ func ReadFile(filename string) (Index, error) {
 	scanner := bufio.NewScanner(file)
 	scanner.Split(bufio.ScanLines)
 	for scanner.Scan() {
-		index[scanner.Text()] = true
+		index[strings.TrimSpace(scanner.Text())] = true
 	}
 
 	return index, nil
