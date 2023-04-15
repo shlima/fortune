@@ -2,10 +2,11 @@ package telegram
 
 import (
 	"fmt"
-	"github.com/shlima/fortune/internal/pkg/key"
+	"strings"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/shlima/fortune/internal/pkg/bruteforce"
+	"github.com/shlima/fortune/internal/pkg/key"
 )
 
 type Opts struct {
@@ -34,7 +35,26 @@ func (c *Cli) SendHeartBeat(heartbit *bruteforce.HeartBit) error {
 }
 
 func (c *Cli) KeyFound(chain key.Chain) error {
-	msg := tgbotapi.NewMessageToChannel(c.Channel, chain.ToString())
+	msg := tgbotapi.NewMessageToChannel(c.Channel, chainMessage(chain))
+	msg.ParseMode = tgbotapi.ModeHTML
+	msg.DisableWebPagePreview = true
 	_, err := c.bot.Send(msg)
 	return err
+}
+
+func chainMessage(chain key.Chain) string {
+	b := new(strings.Builder)
+	b.WriteString("💰")
+	b.WriteString("\n")
+	b.WriteString(fmt.Sprintf("<b>Private</b>: %s", chain.Private))
+	b.WriteString("\n")
+	b.WriteString(fmt.Sprintf(`<b>Compressed</b>: <a href="%s">%s</a>`, addressLink(chain.Compressed), chain.Compressed))
+	b.WriteString("\n")
+	b.WriteString(fmt.Sprintf(`<b>Uncompressed</b>: <a href="%s">%s</a>`, addressLink(chain.Uncompressed), chain.Uncompressed))
+
+	return b.String()
+}
+
+func addressLink(address string) string {
+	return fmt.Sprintf("https://www.blockchain.com/explorer/addresses/btc/%s", address)
 }

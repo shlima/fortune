@@ -1,6 +1,8 @@
 package key
 
 import (
+	"crypto/rand"
+	"encoding/hex"
 	"fmt"
 	"time"
 )
@@ -19,9 +21,9 @@ func (c *Chain) ToString() string {
 
 func NewTestingChain(address string) Chain {
 	out := Chain{
-		Private:      "Private",
-		Compressed:   "Compressed",
-		Uncompressed: "Uncompressed",
+		Private:      randomHex(32),
+		Compressed:   randomHex(14),
+		Uncompressed: randomHex(14),
 	}
 
 	switch {
@@ -32,4 +34,10 @@ func NewTestingChain(address string) Chain {
 	}
 
 	return out
+}
+
+func randomHex(n int) string {
+	bytes := make([]byte, n)
+	_, _ = rand.Read(bytes)
+	return hex.EncodeToString(bytes)
 }
