@@ -10,7 +10,7 @@ import (
 func ReadFile(filename string) (Index, error) {
 	file, err := os.Open(filename)
 	if err != nil {
-		return nil, fmt.Errorf("faeild to read file <%s>: %w", filename, err)
+		return nil, fmt.Errorf("failed to read file <%s>: %w", filename, err)
 	}
 
 	index := make(Index, 0)
@@ -28,7 +28,7 @@ func ReadFiles(filenames ...string) (Index, error) {
 	for _, name := range filenames {
 		i, err := ReadFile(name)
 		if err != nil {
-			return nil, fmt.Errorf("faield to read: %w", err)
+			return nil, err
 		}
 
 		for k, _ := range i {
