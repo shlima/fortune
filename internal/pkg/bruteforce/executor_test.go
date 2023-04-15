@@ -35,11 +35,12 @@ func TestExecutor_DataLength(t *testing.T) {
 	})
 }
 
-func TestExecutor_Run(t *testing.T) {
+func TestExecutor_RunAsync(t *testing.T) {
 	t.Parallel()
 
 	t.Run("when nothing found", func(t *testing.T) {
 		t.Parallel()
+
 		setup := MustSetup(t, make(datum.Index))
 		defer setup.ctrl.Finish()
 
@@ -49,7 +50,7 @@ func TestExecutor_Run(t *testing.T) {
 			AnyTimes()
 
 		got := make([]domain.KeyChain, 0)
-		go setup.Run(func(chain domain.KeyChain) {
+		setup.RunAsync(func(chain domain.KeyChain) {
 			got = append(got, chain)
 		})
 
@@ -75,7 +76,7 @@ func TestExecutor_Run(t *testing.T) {
 			AnyTimes()
 
 		got := make([]domain.KeyChain, 0)
-		go setup.Run(func(chain domain.KeyChain) {
+		setup.RunAsync(func(chain domain.KeyChain) {
 			got = append(got, chain)
 		})
 
@@ -102,7 +103,7 @@ func TestExecutor_Run(t *testing.T) {
 			AnyTimes()
 
 		got := make([]domain.KeyChain, 0)
-		go setup.Run(func(chain domain.KeyChain) {
+		setup.RunAsync(func(chain domain.KeyChain) {
 			got = append(got, chain)
 		})
 
@@ -125,12 +126,22 @@ func TestExecutor_Heartbeat(t *testing.T) {
 			Return(domain.KeyChain{}, nil).
 			AnyTimes()
 
-		go setup.Run(EmptyFoundFn)
+		setup.RunAsync(EmptyFoundFn)
 		MustSleep(t)
 		setup.Stop()
 
 		got := setup.Heartbeat()
 		require.NotEmpty(t, got.IOps)
 		require.NotEmpty(t, got.Tried)
+	})
+}
+
+func TestExecutor_Run(t *testing.T) {
+	t.Run("it works", func(t *testing.T) {
+		setup := MustSetup(t, nil)
+		defer setup.ctrl.Finish()
+
+		setup.SetWorkers(0)
+		setup.Run(EmptyFoundFn)
 	})
 }

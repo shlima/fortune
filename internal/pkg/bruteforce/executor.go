@@ -1,7 +1,6 @@
 package bruteforce
 
 import (
-	"context"
 	"fmt"
 	"math"
 	"sync"
@@ -17,13 +16,12 @@ type Executor struct {
 	gen     key.IGenerator
 	workers int
 	sleep   time.Duration
-	ch      IopCh
 	ops     uint64
 	prev    uint64
 	wg      *sync.WaitGroup
 	t0      time.Time
 	mx      *sync.Mutex
-	cancel  context.CancelFunc
+	closes  []CloseCh
 }
 
 func New(index datum.Index, gen key.IGenerator, workers int) *Executor {
@@ -32,10 +30,14 @@ func New(index datum.Index, gen key.IGenerator, workers int) *Executor {
 		gen:     gen,
 		workers: workers,
 		wg:      new(sync.WaitGroup),
-		cancel:  func() {},
+		closes:  make([]CloseCh, 0),
 		t0:      time.Now(),
 		mx:      new(sync.Mutex),
 	}
+}
+
+func (e *Executor) SetWorkers(count int) {
+	e.workers = count
 }
 
 // SetNightMode sets night mode (use less CPU)
@@ -67,38 +69,44 @@ func (e *Executor) Get(address string) bool {
 }
 
 func (e *Executor) Run(fn FoundFn) {
-	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel()
+	e.RunAsync(fn)
+	e.wg.Wait()
+}
 
-	e.cancel = cancel
-	e.ch = make(IopCh, e.workers*10_000)
+func (e *Executor) RunAsync(fn FoundFn) {
+	e.mx.Lock()
+	defer e.mx.Unlock()
+
 	e.wg = new(sync.WaitGroup)
+	e.closes = make([]CloseCh, e.workers)
 	for i := 0; i < e.workers; i++ {
 		e.wg.Add(1)
-		go e.run(ctx, fn)
-	}
-
-	for {
-		e.SetOpts(uint64(<-e.ch))
+		e.closes[i] = make(CloseCh, 1)
+		go e.run(e.closes[i], fn)
 	}
 }
 
 func (e *Executor) Stop() {
-	e.cancel()
+	for i := range e.closes {
+		e.closes[i] <- true
+	}
+
 	e.wg.Wait()
-	close(e.ch)
+	for i := range e.closes {
+		close(e.closes[i])
+	}
 }
 
-func (e *Executor) run(ctx context.Context, foundFn FoundFn) {
+func (e *Executor) run(close CloseCh, foundFn FoundFn) {
 	for {
 		select {
-		case <-ctx.Done():
+		case <-close:
 			e.wg.Done()
 			return
 		default:
 			e.next(foundFn)
+			e.addOpts(1)
 			time.Sleep(e.sleep)
-			e.ch <- 1
 		}
 	}
 }
@@ -138,6 +146,6 @@ func (e *Executor) GetOps() uint64 {
 	return atomic.LoadUint64(&e.ops)
 }
 
-func (e *Executor) SetOpts(value uint64) {
+func (e *Executor) addOpts(value uint64) {
 	atomic.AddUint64(&e.ops, value)
 }
