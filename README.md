@@ -1,5 +1,7 @@
 # Fortune
 
+[![Test](https://github.com/shlima/fortune/actions/workflows/test.yml/badge.svg)](https://github.com/shlima/fortune/actions/workflows/test.yml)
+
 Cracker of bitcoin addresses (private keys) by brute forcing 
 (includes dataset of **323,156** wallets with non-zero balance).
 
