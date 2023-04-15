@@ -34,7 +34,7 @@ bruteforce
 
 ## Examination
 
-In order to check the correctness of the notifications to Telegram, 
+In order to check the correctness of the notifications, 
 as well as the correctness of the dictionaries with addresses, 
 run the `bruteforce test` command with the number of the wallet 
 in the dataset as an argument:

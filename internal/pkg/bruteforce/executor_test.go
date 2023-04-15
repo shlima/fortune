@@ -137,11 +137,27 @@ func TestExecutor_Heartbeat(t *testing.T) {
 }
 
 func TestExecutor_Run(t *testing.T) {
+	t.Parallel()
+
 	t.Run("it works", func(t *testing.T) {
 		setup := MustSetup(t, nil)
 		defer setup.ctrl.Finish()
 
 		setup.SetWorkers(0)
 		setup.Run(EmptyFoundFn)
+	})
+}
+
+func TestExecutor_SetWorkers(t *testing.T) {
+	t.Parallel()
+
+	t.Run("it works", func(t *testing.T) {
+		setup := MustSetup(t, nil)
+		defer setup.ctrl.Finish()
+
+		setup.SetWorkers(0)
+		require.Equal(t, 0, setup.WorkersCount())
+		setup.SetWorkers(1)
+		require.Equal(t, 1, setup.WorkersCount())
 	})
 }

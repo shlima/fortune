@@ -63,6 +63,10 @@ func (e *Executor) DataLength() int {
 	return len(e.index)
 }
 
+func (e *Executor) WorkersCount() int {
+	return e.workers
+}
+
 // Get tests the index with the passed address
 func (e *Executor) Get(address string) bool {
 	return e.index[address]

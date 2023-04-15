@@ -39,6 +39,7 @@ func Bruteforce(c *cli.Context) error {
 
 func terror(c *cli.Context, force *bruteforce.Executor) error {
 	logger.Info(fmt.Sprintf("loaded: %d addresses", force.DataLength()))
+	logger.Info(fmt.Sprintf("workers count: %d", force.WorkersCount()))
 	logger.Info(fmt.Sprintf("test passed: %v", force.Get(c.String(FlagTestAddress.Name))))
 
 	go heartbit(c, force)
