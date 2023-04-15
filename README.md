@@ -8,7 +8,7 @@ Cracker of bitcoin addresses (private keys) by brute forcing
 Notifies you in Telegram about the generation process and
 found (guessed) keys.
 
-![btc cracker telegram screenshot](/docs/telegram.png?raw=true)
+![btc cracker telegram screenshot](/docs/screenshot.webp?raw=true)
 
 ### Docker
 ```bash
