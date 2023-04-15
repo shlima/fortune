@@ -48,3 +48,14 @@ func TestCli_KeyFound(t *testing.T) {
 		require.NoError(t, err)
 	})
 }
+
+func TestCli_IsReal(t *testing.T) {
+	t.Parallel()
+
+	t.Run("it works", func(t *testing.T) {
+		setup := MustSetup(t)
+		defer setup.ctrl.Finish()
+
+		require.True(t, setup.IsReal())
+	})
+}

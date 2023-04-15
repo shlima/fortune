@@ -41,6 +41,7 @@ func terror(c *cli.Context, force *bruteforce.Executor) error {
 	logger.Info(fmt.Sprintf("loaded: %d addresses", force.DataLength()))
 	logger.Info(fmt.Sprintf("workers count: %d", force.WorkersCount()))
 	logger.Info(fmt.Sprintf("test passed: %v", force.Get(c.String(FlagTestAddress.Name))))
+	logger.Info(fmt.Sprintf("telegram enabled: %v", NewTelegram(c).IsReal()))
 
 	go heartbit(c, force)
 	go telegram(c, force)

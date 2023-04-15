@@ -15,6 +15,7 @@ type (
 type ICli interface {
 	HeartBeat(message string) error
 	KeyFound(message string) error
+	IsReal() bool
 }
 
 // IApi should be implemented by tgbotapi.BotAPI

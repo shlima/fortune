@@ -37,3 +37,7 @@ func (c *Cli) KeyFound(html string) error {
 	_, err := c.api.Send(msg)
 	return err
 }
+
+func (c *Cli) IsReal() bool {
+	return true
+}
