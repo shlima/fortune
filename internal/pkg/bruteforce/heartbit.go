@@ -3,8 +3,8 @@ package bruteforce
 import "fmt"
 
 type HeartBit struct {
-	Tried int64
-	IOps  int64
+	Tried uint64
+	IOps  uint64
 }
 
 func (h *HeartBit) ToString() string {

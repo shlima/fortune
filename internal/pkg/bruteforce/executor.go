@@ -19,9 +19,9 @@ type Executor struct {
 	workers int
 	sleep   time.Duration
 	ch      IopCh
-	ops     int64
+	ops     uint64
+	prev    uint64
 	t0      time.Time
-	prev    int64
 	mx      *sync.Mutex
 }
 
@@ -62,7 +62,7 @@ func (e *Executor) Run(fn FoundFn) {
 	}
 
 	for {
-		e.ops += int64(<-e.ch)
+		e.ops += uint64(<-e.ch)
 	}
 }
 
@@ -95,7 +95,7 @@ func (e *Executor) Heartbeat() *HeartBit {
 
 	out := &HeartBit{
 		Tried: tried,
-		IOps:  int64(math.Round(float64(tried-e.prev) / t1.Sub(e.t0).Seconds())),
+		IOps:  uint64(math.Round(float64(tried-e.prev) / t1.Sub(e.t0).Seconds())),
 	}
 
 	e.prev = tried
