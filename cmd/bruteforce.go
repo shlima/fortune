@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/google/logger"
 	"github.com/shlima/fortune/internal/pkg/bruteforce"
 	"github.com/shlima/fortune/internal/pkg/key"
 	"github.com/urfave/cli/v2"
@@ -35,8 +36,8 @@ func Bruteforce(c *cli.Context) error {
 }
 
 func terror(c *cli.Context, force *bruteforce.Executor) error {
-	fmt.Printf("loaded: %d addresses\n", force.DataLength())
-	fmt.Printf("test passed: %v\n", force.Get(c.String(FlagTestAddress.Name)))
+	logger.Info(fmt.Sprintf("loaded: %d addresses", force.DataLength()))
+	logger.Info(fmt.Sprintf("test passed: %v", force.Get(c.String(FlagTestAddress.Name))))
 
 	go heartbit(c, force)
 	go telegram(c, force)
@@ -47,7 +48,7 @@ func terror(c *cli.Context, force *bruteforce.Executor) error {
 
 func heartbit(c *cli.Context, force *bruteforce.Executor) {
 	for range time.Tick(time.Second * time.Duration(c.Int(FlagHeartBeatSec.Name))) {
-		fmt.Println(force.Heartbeat().ToString())
+		logger.Info(force.Heartbeat().ToString())
 	}
 }
 
@@ -55,16 +56,16 @@ func telegram(c *cli.Context, force *bruteforce.Executor) {
 	bot := NewTelegram(c)
 	for range time.Tick(time.Second * time.Duration(c.Int(FlagTelegramPingSec.Name))) {
 		if err := bot.SendHeartBeat(force.Heartbeat()); err != nil {
-			fmt.Printf("failed to send to telegram: %s\n", err)
+			logger.Error(fmt.Sprintf("failed to send to telegram: %s\n", err))
 		}
 	}
 }
 
 func onFound(c *cli.Context) bruteforce.FoundFn {
 	return func(chain key.Chain) {
-		fmt.Printf(">>>> FOUND <<<< %s\n", chain.ToString())
+		logger.Fatal(fmt.Sprintf("FOUND: %s", chain.ToString()))
 		err := NewTelegram(c).KeyFound(chain)
-		fmt.Printf("Send to telegram result: %s\n", err)
+		logger.Info(fmt.Sprintf("Send to telegram result: %s", err))
 		panic(chain.ToString())
 	}
 }

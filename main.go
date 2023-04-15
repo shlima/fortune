@@ -30,6 +30,9 @@ func main() {
 			cmd.FlagTelegramToken,
 			cmd.FlagTelegramChannel,
 		},
+		Before: func(c *cli.Context) error {
+			return each(c, cmd.InitLogger)
+		},
 		Commands: []*cli.Command{
 			{
 				Name:   "bruteforce",
