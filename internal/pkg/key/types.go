@@ -1,5 +1,7 @@
 package key
 
+//go:generate mockgen -source types.go -destination ../../mock/key.go -package mock -mock_names IGenerator=MockKeygenerator
+
 type IGenerator interface {
 	Generate() (out Chain, err error)
 	SetTesting(address string) IGenerator
