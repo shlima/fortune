@@ -1,9 +1,9 @@
 # Fortune
 
 Cracker of bitcoin addresses (private keys) by brute forcing 
-(includes dataset of 323,156 wallets with non-zero balance).
+(includes dataset of **323,156** wallets with non-zero balance).
 
-![btc cracker telegram screenshot](/docs/telegram.png?raw=true&width=300)
+![btc cracker telegram screenshot](/docs/telegram.png?raw=true)
 
 Notifies you in Telegram about the generation process and 
 found (guessed) keys.
