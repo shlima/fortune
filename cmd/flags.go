@@ -4,6 +4,7 @@ import "github.com/urfave/cli/v2"
 
 var FlagWorkers = &cli.IntFlag{
 	Name:    "workers",
+	Usage:   "number of workers for parallel execution",
 	EnvVars: []string{"WORKERS"},
 	Value:   1,
 }

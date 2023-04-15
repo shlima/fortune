@@ -22,13 +22,14 @@ bruteforce
 ```
 
 ## Arguments
-| Argument    | Description                                                                   |
-|-------------|-------------------------------------------------------------------------------|
-| file | file with a custom dictionary (each address on a new line) can take many arguments |
-| heartbit-sec | print status each N seconds to STDOUT                                         |
+| Argument          | Description                                                                   |
+|-------------------|-------------------------------------------------------------------------------|
+| file              | file with a custom dictionary (each address on a new line) can take many arguments |
+| workers           | number of workers for parallel execution |
+| heartbit-sec      | print status each N seconds to STDOUT                                         |
 | telegram-ping-sec | send status each N seconds to telegram                                        |
-| telegram-token | token of the telegram bot                                                     |
-| telegram-channel | @channel name for the notifications (bot should be added as an administrator) |
+| telegram-token    | token of the telegram bot                                                     |
+| telegram-channel  | @channel name for the notifications (bot should be added as an administrator) |
 
 ## Examination
 
