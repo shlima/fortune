@@ -12,7 +12,7 @@ func NewNoOp() *NoOp {
 	return &NoOp{}
 }
 
-func (n *NoOp) SendHeartBeat(heartbit *bruteforce.HeartBit) error {
+func (n *NoOp) HeartBeat(heartbit *bruteforce.HeartBit) error {
 	return nil
 }
 

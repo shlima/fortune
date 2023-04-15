@@ -55,7 +55,7 @@ func heartbit(c *cli.Context, force *bruteforce.Executor) {
 func telegram(c *cli.Context, force *bruteforce.Executor) {
 	bot := NewTelegram(c)
 	for range time.Tick(time.Second * time.Duration(c.Int(FlagTelegramPingSec.Name))) {
-		if err := bot.SendHeartBeat(force.Heartbeat()); err != nil {
+		if err := bot.HeartBeat(force.Heartbeat()); err != nil {
 			logger.Error(fmt.Sprintf("failed to send to telegram: %s\n", err))
 		}
 	}

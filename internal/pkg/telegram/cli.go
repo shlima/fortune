@@ -16,7 +16,7 @@ type Opts struct {
 
 type Cli struct {
 	Opts
-	bot *tgbotapi.BotAPI
+	api IApi
 }
 
 func New(opts Opts) (*Cli, error) {
@@ -25,12 +25,12 @@ func New(opts Opts) (*Cli, error) {
 		return nil, fmt.Errorf("failed to init bot: %w", err)
 	}
 
-	return &Cli{Opts: opts, bot: bot}, nil
+	return &Cli{Opts: opts, api: bot}, nil
 }
 
-func (c *Cli) SendHeartBeat(heartbit *bruteforce.HeartBit) error {
+func (c *Cli) HeartBeat(heartbit *bruteforce.HeartBit) error {
 	msg := tgbotapi.NewMessageToChannel(c.Channel, heartbit.ToString())
-	_, err := c.bot.Send(msg)
+	_, err := c.api.Send(msg)
 	return err
 }
 
@@ -38,7 +38,7 @@ func (c *Cli) KeyFound(chain key.Chain) error {
 	msg := tgbotapi.NewMessageToChannel(c.Channel, chainMessage(chain))
 	msg.ParseMode = tgbotapi.ModeHTML
 	msg.DisableWebPagePreview = true
-	_, err := c.bot.Send(msg)
+	_, err := c.api.Send(msg)
 	return err
 }
 
