@@ -44,6 +44,10 @@ func main() {
 						Action: cmd.BruteforceTest,
 					},
 				},
+			}, {
+				Name:   "random",
+				Action: cmd.Random,
+				Usage:  "prints random address from the dataset files",
 			},
 		},
 	}

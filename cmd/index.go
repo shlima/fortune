@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+
 	"github.com/shlima/fortune/internal/pkg/datum"
 	"github.com/urfave/cli/v2"
 )
