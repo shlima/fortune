@@ -9,8 +9,8 @@ var FlagWorkers = &cli.IntFlag{
 }
 
 var FlagHeartBeatSec = &cli.IntFlag{
-	Name:    "heartbit",
-	Usage:   "print status info each n seconds",
+	Name:    "heartbit-sec",
+	Usage:   "print status each N seconds to STDOUT",
 	EnvVars: []string{"HEARTBEAT_SEC"},
 	Value:   10,
 }
@@ -25,4 +25,18 @@ var FlagNightMode = &cli.BoolFlag{
 	Name:    "night",
 	EnvVars: []string{"NIGHT"},
 	Value:   false,
+}
+
+var FlagFiles = &cli.StringSliceFlag{
+	Name:    "file",
+	Usage:   "a file with a custom dictionary",
+	EnvVars: []string{"FILE"},
+	Value: cli.NewStringSlice(
+		"addresses/Bitcoin/2023/04/p2pkh_Rich_Max_1.txt",
+		"addresses/Bitcoin/2023/04/p2pkh_Rich_Max_10.txt",
+		"addresses/Bitcoin/2023/04/p2pkh_Rich_Max_100.txt",
+		"addresses/Bitcoin/2023/04/p2pkh_Rich_Max_1000.txt",
+		"addresses/Bitcoin/2023/04/p2pkh_Rich_Max_10000.txt",
+		"addresses/Bitcoin/2023/04/p2pkh_Rich_Max_100000.txt",
+	),
 }

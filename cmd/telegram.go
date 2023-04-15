@@ -10,17 +10,19 @@ import (
 
 var FlagTelegramToken = &cli.StringFlag{
 	Name:    "telegram-token",
+	Usage:   "token of the telegram bot",
 	EnvVars: []string{"TELEGRAM_TOKEN"},
 }
 
 var FlagTelegramChannel = &cli.StringFlag{
 	Name:    "telegram-channel",
+	Usage:   "@channel name for the notifications (bot should be added as an administrator)",
 	EnvVars: []string{"TELEGRAM_CHANNEL"},
 }
 
 var FlagTelegramPingSec = &cli.IntFlag{
 	Name:    "telegram-ping-sec",
-	Usage:   "notify status into telegram each n seconds",
+	Usage:   "send status each N seconds to telegram",
 	EnvVars: []string{"TELEGRAM_PING_SEC"},
 	Value:   int(time.Hour.Seconds()),
 }
