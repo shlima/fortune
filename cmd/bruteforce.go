@@ -5,8 +5,9 @@ import (
 	"time"
 
 	"github.com/google/logger"
+	"github.com/shlima/fortune/internal/mapper"
 	"github.com/shlima/fortune/internal/pkg/bruteforce"
-	"github.com/shlima/fortune/internal/pkg/key"
+	"github.com/shlima/fortune/internal/pkg/domain"
 	"github.com/urfave/cli/v2"
 )
 
@@ -32,6 +33,7 @@ func Bruteforce(c *cli.Context) error {
 		c.Int(FlagWorkers.Name),
 	)
 
+	force.SetNightMode(c.Bool(FlagNightMode.Name))
 	return terror(c, force)
 }
 
@@ -55,16 +57,16 @@ func heartbit(c *cli.Context, force *bruteforce.Executor) {
 func telegram(c *cli.Context, force *bruteforce.Executor) {
 	bot := NewTelegram(c)
 	for range time.Tick(time.Second * time.Duration(c.Int(FlagTelegramPingSec.Name))) {
-		if err := bot.HeartBeat(force.Heartbeat()); err != nil {
+		if err := bot.HeartBeat(force.Heartbeat().ToString()); err != nil {
 			logger.Error(fmt.Sprintf("failed to send to telegram: %s\n", err))
 		}
 	}
 }
 
 func onFound(c *cli.Context) bruteforce.FoundFn {
-	return func(chain key.Chain) {
+	return func(chain domain.KeyChain) {
 		logger.Fatal(fmt.Sprintf("FOUND: %s", chain.ToString()))
-		err := NewTelegram(c).KeyFound(chain)
+		err := NewTelegram(c).KeyFound(mapper.KeyChainHTML(chain))
 		logger.Info(fmt.Sprintf("Send to telegram result: %s", err))
 		panic(chain.ToString())
 	}

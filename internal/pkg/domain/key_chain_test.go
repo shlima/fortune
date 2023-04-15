@@ -1,4 +1,4 @@
-package key
+package domain
 
 import (
 	"testing"
@@ -6,11 +6,11 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestChain_ToString(t *testing.T) {
+func TestKeyChain_ToString(t *testing.T) {
 	t.Parallel()
 
 	t.Run("it works", func(t *testing.T) {
-		chain := Chain{
+		chain := KeyChain{
 			Private:      "Private01",
 			Compressed:   "Compressed02",
 			Uncompressed: "Uncompressed02",
@@ -23,12 +23,12 @@ func TestChain_ToString(t *testing.T) {
 	})
 }
 
-func TestNewTestingChain(t *testing.T) {
+func TestNewTestingKeyChain(t *testing.T) {
 	t.Parallel()
 
 	t.Run("it works", func(t *testing.T) {
 		address := "foo"
-		got := NewTestingChain(address)
+		got := NewTestingKeyChain(address)
 		require.NotEmpty(t, got.Private)
 		require.NotEmpty(t, got.Compressed)
 		require.NotEmpty(t, got.Uncompressed)

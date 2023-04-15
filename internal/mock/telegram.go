@@ -7,10 +7,8 @@ package mock
 import (
 	reflect "reflect"
 
-	v5 "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	gomock "github.com/golang/mock/gomock"
-	bruteforce "github.com/shlima/fortune/internal/pkg/bruteforce"
-	key "github.com/shlima/fortune/internal/pkg/key"
 )
 
 // MockTelegramCli is a mock of ICli interface.
@@ -37,31 +35,31 @@ func (m *MockTelegramCli) EXPECT() *MockTelegramCliMockRecorder {
 }
 
 // HeartBeat mocks base method.
-func (m *MockTelegramCli) HeartBeat(heartbit *bruteforce.HeartBit) error {
+func (m *MockTelegramCli) HeartBeat(message string) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "HeartBeat", heartbit)
+	ret := m.ctrl.Call(m, "HeartBeat", message)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // HeartBeat indicates an expected call of HeartBeat.
-func (mr *MockTelegramCliMockRecorder) HeartBeat(heartbit interface{}) *gomock.Call {
+func (mr *MockTelegramCliMockRecorder) HeartBeat(message interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HeartBeat", reflect.TypeOf((*MockTelegramCli)(nil).HeartBeat), heartbit)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HeartBeat", reflect.TypeOf((*MockTelegramCli)(nil).HeartBeat), message)
 }
 
 // KeyFound mocks base method.
-func (m *MockTelegramCli) KeyFound(chain key.Chain) error {
+func (m *MockTelegramCli) KeyFound(message string) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "KeyFound", chain)
+	ret := m.ctrl.Call(m, "KeyFound", message)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // KeyFound indicates an expected call of KeyFound.
-func (mr *MockTelegramCliMockRecorder) KeyFound(chain interface{}) *gomock.Call {
+func (mr *MockTelegramCliMockRecorder) KeyFound(message interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "KeyFound", reflect.TypeOf((*MockTelegramCli)(nil).KeyFound), chain)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "KeyFound", reflect.TypeOf((*MockTelegramCli)(nil).KeyFound), message)
 }
 
 // MockTelegramApi is a mock of IApi interface.
@@ -88,10 +86,10 @@ func (m *MockTelegramApi) EXPECT() *MockTelegramApiMockRecorder {
 }
 
 // Send mocks base method.
-func (m *MockTelegramApi) Send(c v5.Chattable) (v5.Message, error) {
+func (m *MockTelegramApi) Send(c tgbotapi.Chattable) (tgbotapi.Message, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Send", c)
-	ret0, _ := ret[0].(v5.Message)
+	ret0, _ := ret[0].(tgbotapi.Message)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }

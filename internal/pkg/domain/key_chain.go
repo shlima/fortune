@@ -1,4 +1,4 @@
-package key
+package domain
 
 import (
 	"crypto/rand"
@@ -7,20 +7,20 @@ import (
 	"time"
 )
 
-type Chain struct {
+type KeyChain struct {
 	Private      string
 	Compressed   string
 	Uncompressed string
 }
 
-func (c *Chain) ToString() string {
+func (k *KeyChain) ToString() string {
 	return fmt.Sprintf(
 		"Private: %s Compressed: %s Ucomprssed: %s",
-		c.Private, c.Compressed, c.Uncompressed)
+		k.Private, k.Compressed, k.Uncompressed)
 }
 
-func NewTestingChain(address string) Chain {
-	out := Chain{
+func NewTestingKeyChain(address string) KeyChain {
+	out := KeyChain{
 		Private:      randomHex(32),
 		Compressed:   randomHex(14),
 		Uncompressed: randomHex(14),

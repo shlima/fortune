@@ -24,6 +24,7 @@ var FlagTestAddress = &cli.StringFlag{
 
 var FlagNightMode = &cli.BoolFlag{
 	Name:    "night",
+	Usage:   "night or silent mode (reduced CPU usage)",
 	EnvVars: []string{"NIGHT"},
 	Value:   false,
 }

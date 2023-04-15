@@ -32,3 +32,6 @@ push: export TAG=$(VERSION)
 push:
 	docker push ${REGISTRY_NAME}:${TAG}
 	docker push ${REGISTRY_NAME}:latest
+
+generate:
+	go generate ./...

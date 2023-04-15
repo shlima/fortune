@@ -9,6 +9,7 @@ import (
 	"github.com/btcsuite/btcd/btcec/v2"
 	"github.com/btcsuite/btcd/btcutil"
 	"github.com/btcsuite/btcd/chaincfg"
+	"github.com/shlima/fortune/internal/pkg/domain"
 )
 
 type Generator struct {
@@ -36,9 +37,9 @@ func (g *Generator) SetTesting(address string) IGenerator {
 // chain can spend the funds.
 //
 // In Bitcoin, a private key is a single unsigned 256 bit integer (32 bytes).
-func (g *Generator) Generate() (out Chain, err error) {
+func (g *Generator) Generate() (out domain.KeyChain, err error) {
 	if g.testing != "" {
-		return NewTestingChain(g.testing), nil
+		return domain.NewTestingKeyChain(g.testing), nil
 	}
 
 	res, err := rand.Int(rand.Reader, g.max)
@@ -58,7 +59,7 @@ func (g *Generator) Generate() (out Chain, err error) {
 		return out, fmt.Errorf("failed to uncompress key")
 	}
 
-	return Chain{
+	return domain.KeyChain{
 		Private:      hex.EncodeToString(bytea),
 		Compressed:   compressed.EncodeAddress(),
 		Uncompressed: uncompressed.EncodeAddress(),
