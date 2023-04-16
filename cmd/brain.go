@@ -16,7 +16,7 @@ func Brain(c *cli.Context) error {
 	}
 
 	fmt.Printf(strings.TrimPrefix(`
-Password: %s
+Password: <%s>
 Private: %s
 Compressed: %s
 Uncompressed: %s
