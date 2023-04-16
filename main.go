@@ -37,6 +37,7 @@ func main() {
 			{
 				Name:   "bruteforce",
 				Action: cmd.Bruteforce,
+				Usage:  "run bruteforce against the dataset of rich addresses",
 				Subcommands: []*cli.Command{
 					{
 						Name:   "test",

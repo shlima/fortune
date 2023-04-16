@@ -18,6 +18,7 @@ var FlagHeartBeatSec = &cli.IntFlag{
 
 var FlagTestAddress = &cli.StringFlag{
 	Name:    "test-address",
+	Usage:   "address to test dataset before running brute force",
 	EnvVars: []string{"TEST_ADDRESS"},
 	Value:   "1LQoWist8KkaUXSPKZHNvEyfrEkPHzSsCd",
 }

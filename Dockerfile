@@ -12,9 +12,7 @@ FROM ${ISO_BASE} as iso
 WORKDIR /app
 ENV PATH="/app:${PATH}"
 COPY --from=build /go/src/github.com/github.com/shlima/fortune/build/linux ./fortune
-COPY addresses addresses
-ENV ISO_DEPS bash busybox-extras curl
-RUN apk add --update --no-cache $ISO_DEPS
+COPY addresses/Bitcoin/2023 addresses/Bitcoin/2023
 RUN addgroup --gid 2019 user && \
     adduser --disabled-password --uid 2019 --ingroup user --gecos user user
 RUN chown -R user:user ./
