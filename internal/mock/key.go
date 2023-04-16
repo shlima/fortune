@@ -34,6 +34,21 @@ func (m *MockKeygenerator) EXPECT() *MockKeygeneratorMockRecorder {
 	return m.recorder
 }
 
+// BrainSHA256 mocks base method.
+func (m *MockKeygenerator) BrainSHA256(password []byte) (key.KeyChain, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "BrainSHA256", password)
+	ret0, _ := ret[0].(key.KeyChain)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// BrainSHA256 indicates an expected call of BrainSHA256.
+func (mr *MockKeygeneratorMockRecorder) BrainSHA256(password interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "BrainSHA256", reflect.TypeOf((*MockKeygenerator)(nil).BrainSHA256), password)
+}
+
 // Generate mocks base method.
 func (m *MockKeygenerator) Generate() (key.KeyChain, error) {
 	m.ctrl.T.Helper()

@@ -48,6 +48,20 @@ func (mr *MockTelegramCliMockRecorder) HeartBeat(message interface{}) *gomock.Ca
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HeartBeat", reflect.TypeOf((*MockTelegramCli)(nil).HeartBeat), message)
 }
 
+// IsReal mocks base method.
+func (m *MockTelegramCli) IsReal() bool {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "IsReal")
+	ret0, _ := ret[0].(bool)
+	return ret0
+}
+
+// IsReal indicates an expected call of IsReal.
+func (mr *MockTelegramCliMockRecorder) IsReal() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IsReal", reflect.TypeOf((*MockTelegramCli)(nil).IsReal))
+}
+
 // KeyFound mocks base method.
 func (m *MockTelegramCli) KeyFound(message string) error {
 	m.ctrl.T.Helper()
