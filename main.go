@@ -57,6 +57,15 @@ func main() {
 				Name:   "brain",
 				Action: cmd.Brain,
 				Usage:  "generate brain wallet base on password first argument)",
+			}, {
+				Name:   "brainforce",
+				Action: cmd.BrainForce,
+				Usage:  "run bruteforce with alphabetical passwords permutations against the dataset of rich addresses",
+				Flags: []cli.Flag{
+					cmd.FlagPassState,
+					cmd.FlagPassLength,
+					cmd.FlagPassAlphabet,
+				},
 			},
 		},
 	}
