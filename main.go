@@ -48,6 +48,10 @@ func main() {
 				Name:   "random",
 				Action: cmd.Random,
 				Usage:  "prints random address from the dataset files",
+			}, {
+				Name:   "generate",
+				Action: cmd.Generate,
+				Usage:  "random bitcoin address",
 			},
 		},
 	}
