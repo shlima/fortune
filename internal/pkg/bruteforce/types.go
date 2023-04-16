@@ -1,13 +1,15 @@
 package bruteforce
 
-import "github.com/shlima/fortune/internal/pkg/domain"
+import (
+	"github.com/shlima/fortune/internal/pkg/key"
+)
 
 type CloseCh = chan bool
-type FoundFn func(chain domain.KeyChain)
+type FoundFn func(chain key.KeyChain)
 
 type IHeartBit interface {
 	ToString() string
 }
 
-func EmptyFoundFn(chain domain.KeyChain) {
+func EmptyFoundFn(chain key.KeyChain) {
 }

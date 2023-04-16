@@ -1,4 +1,4 @@
-package domain
+package key
 
 import (
 	"crypto/rand"
@@ -11,12 +11,6 @@ type KeyChain struct {
 	Private      string
 	Compressed   string
 	Uncompressed string
-}
-
-func (k *KeyChain) ToString() string {
-	return fmt.Sprintf(
-		"Private: %s Compressed: %s Ucomprssed: %s",
-		k.Private, k.Compressed, k.Uncompressed)
 }
 
 func NewTestingKeyChain(address string) KeyChain {
@@ -34,6 +28,21 @@ func NewTestingKeyChain(address string) KeyChain {
 	}
 
 	return out
+}
+
+func (k *KeyChain) ToString() string {
+	return fmt.Sprintf(
+		"Private: %s Compressed: %s Ucomprssed: %s",
+		k.Private, k.Compressed, k.Uncompressed)
+}
+
+func (k *KeyChain) ToWIF() (string, error) {
+	bytea, err := hex.DecodeString(k.Private)
+	if err != nil {
+		return "", fmt.Errorf("failed to decode: %w", err)
+	}
+
+	return PrivToWIF(bytea)
 }
 
 func randomHex(n int) string {

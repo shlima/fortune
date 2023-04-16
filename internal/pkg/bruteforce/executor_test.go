@@ -1,11 +1,11 @@
 package bruteforce
 
 import (
+	"github.com/shlima/fortune/internal/pkg/key"
 	"testing"
 	"time"
 
 	"github.com/shlima/fortune/internal/pkg/datum"
-	"github.com/shlima/fortune/internal/pkg/domain"
 	"github.com/stretchr/testify/require"
 )
 
@@ -46,11 +46,11 @@ func TestExecutor_RunAsync(t *testing.T) {
 
 		setup.gen.EXPECT().
 			Generate().
-			Return(domain.KeyChain{}, nil).
+			Return(key.KeyChain{}, nil).
 			AnyTimes()
 
-		got := make([]domain.KeyChain, 0)
-		setup.RunAsync(func(chain domain.KeyChain) {
+		got := make([]key.KeyChain, 0)
+		setup.RunAsync(func(chain key.KeyChain) {
 			got = append(got, chain)
 		})
 
@@ -64,7 +64,7 @@ func TestExecutor_RunAsync(t *testing.T) {
 		setup := MustSetup(t, nil)
 		defer setup.ctrl.Finish()
 
-		chain := domain.KeyChain{
+		chain := key.KeyChain{
 			Compressed: "Compressed",
 		}
 
@@ -75,8 +75,8 @@ func TestExecutor_RunAsync(t *testing.T) {
 			Return(chain, nil).
 			AnyTimes()
 
-		got := make([]domain.KeyChain, 0)
-		setup.RunAsync(func(chain domain.KeyChain) {
+		got := make([]key.KeyChain, 0)
+		setup.RunAsync(func(chain key.KeyChain) {
 			got = append(got, chain)
 		})
 
@@ -91,7 +91,7 @@ func TestExecutor_RunAsync(t *testing.T) {
 		setup := MustSetup(t, nil)
 		defer setup.ctrl.Finish()
 
-		chain := domain.KeyChain{
+		chain := key.KeyChain{
 			Uncompressed: "Uncompressed",
 		}
 
@@ -102,8 +102,8 @@ func TestExecutor_RunAsync(t *testing.T) {
 			Return(chain, nil).
 			AnyTimes()
 
-		got := make([]domain.KeyChain, 0)
-		setup.RunAsync(func(chain domain.KeyChain) {
+		got := make([]key.KeyChain, 0)
+		setup.RunAsync(func(chain key.KeyChain) {
 			got = append(got, chain)
 		})
 
@@ -123,7 +123,7 @@ func TestExecutor_Heartbeat(t *testing.T) {
 
 		setup.gen.EXPECT().
 			Generate().
-			Return(domain.KeyChain{}, nil).
+			Return(key.KeyChain{}, nil).
 			AnyTimes()
 
 		setup.RunAsync(EmptyFoundFn)

@@ -1,7 +1,6 @@
 package key
 
 import (
-	"encoding/hex"
 	"testing"
 
 	"github.com/btcsuite/btcd/btcutil"
@@ -50,8 +49,17 @@ func TestGenerator_Generate(t *testing.T) {
 	})
 }
 
-func MustHexDecode(t *testing.T, input string) []byte {
-	got, err := hex.DecodeString(input)
-	require.NoError(t, err)
-	return got
+func TestGenerator_BrainSHA256(t *testing.T) {
+	t.Parallel()
+
+	// @refs https://www.bitaddress.org/bitaddress.org-v3.3.0-SHA256-dec17c07685e1870960903d8f58090475b25af946fe95a734f88408cef4aa194.html
+	t.Run("it works", func(t *testing.T) {
+		got, err := New().BrainSHA256([]byte("example of brain wallet"))
+		require.NoError(t, err)
+		require.Equal(t, "17QZasmw4MKwoUhmTiqB73V7Mom3WNqVNR", got.Uncompressed)
+
+		wif, err := got.ToWIF()
+		require.NoError(t, err)
+		require.Equal(t, "5KWv77NznJsh8NCGpjYXtVyqd26h1sZ95VTeWkwG57TQS6DRsgz", wif)
+	})
 }

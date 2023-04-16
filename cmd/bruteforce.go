@@ -5,9 +5,9 @@ import (
 	"time"
 
 	"github.com/google/logger"
-	"github.com/shlima/fortune/internal/mapper"
 	"github.com/shlima/fortune/internal/pkg/bruteforce"
-	"github.com/shlima/fortune/internal/pkg/domain"
+	"github.com/shlima/fortune/internal/pkg/key"
+	"github.com/shlima/fortune/internal/pkg/mapper"
 	"github.com/urfave/cli/v2"
 )
 
@@ -66,7 +66,7 @@ func telegram(c *cli.Context, force *bruteforce.Executor) {
 }
 
 func onFound(c *cli.Context) bruteforce.FoundFn {
-	return func(chain domain.KeyChain) {
+	return func(chain key.KeyChain) {
 		logger.Warning(fmt.Sprintf("FOUND: %s", chain.ToString()))
 		err := NewTelegram(c).KeyFound(mapper.KeyChainHTML(chain))
 		logger.Info(fmt.Sprintf("Send to telegram result: %s", err))

@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/shlima/fortune/internal/pkg/domain"
+	"github.com/shlima/fortune/internal/pkg/key"
 )
 
-func KeyChainHTML(chain domain.KeyChain) string {
+func KeyChainHTML(chain key.KeyChain) string {
 	b := new(strings.Builder)
 	b.WriteString("💰")
 	b.WriteString("\n")

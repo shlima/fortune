@@ -2,14 +2,9 @@ package key
 
 import (
 	"crypto/rand"
-	"encoding/hex"
+	"crypto/sha256"
 	"fmt"
 	"math/big"
-
-	"github.com/btcsuite/btcd/btcec/v2"
-	"github.com/btcsuite/btcd/btcutil"
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/shlima/fortune/internal/pkg/domain"
 )
 
 type Generator struct {
@@ -37,9 +32,9 @@ func (g *Generator) SetTesting(address string) IGenerator {
 // chain can spend the funds.
 //
 // In Bitcoin, a private key is a single unsigned 256 bit integer (32 bytes).
-func (g *Generator) Generate() (out domain.KeyChain, err error) {
+func (g *Generator) Generate() (out KeyChain, err error) {
 	if g.testing != "" {
-		return domain.NewTestingKeyChain(g.testing), nil
+		return NewTestingKeyChain(g.testing), nil
 	}
 
 	res, err := rand.Int(rand.Reader, g.max)
@@ -47,21 +42,15 @@ func (g *Generator) Generate() (out domain.KeyChain, err error) {
 		return out, fmt.Errorf("failed to rand: %w", err)
 	}
 
-	bytea := res.Bytes()
-	_, pub := btcec.PrivKeyFromBytes(bytea)
-	compressed, err := btcutil.NewAddressPubKey(pub.SerializeCompressed(), &chaincfg.MainNetParams)
-	if err != nil {
-		return out, fmt.Errorf("failed to compress key: %w", err)
+	return KeyChainFromPriv(res.Bytes())
+}
+
+// BrainSHA256 generates a brain address base on SHA256(passphrase)
+func (g *Generator) BrainSHA256(password []byte) (out KeyChain, err error) {
+	if g.testing != "" {
+		return NewTestingKeyChain(g.testing), nil
 	}
 
-	uncompressed, err := btcutil.NewAddressPubKey(pub.SerializeUncompressed(), &chaincfg.MainNetParams)
-	if err != nil {
-		return out, fmt.Errorf("failed to uncompress key")
-	}
-
-	return domain.KeyChain{
-		Private:      hex.EncodeToString(bytea),
-		Compressed:   compressed.EncodeAddress(),
-		Uncompressed: uncompressed.EncodeAddress(),
-	}, nil
+	hash := sha256.Sum256(password)
+	return KeyChainFromPriv(hash[:])
 }

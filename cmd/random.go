@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/shlima/fortune/internal/mapper"
+	"github.com/shlima/fortune/internal/pkg/mapper"
 	"github.com/urfave/cli/v2"
 )
 

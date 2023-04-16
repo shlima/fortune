@@ -1,9 +1,9 @@
 package mapper
 
 import (
+	"github.com/shlima/fortune/internal/pkg/key"
 	"testing"
 
-	"github.com/shlima/fortune/internal/pkg/domain"
 	"github.com/stretchr/testify/require"
 )
 
@@ -20,7 +20,7 @@ func TestKeyChainHTML(t *testing.T) {
 	t.Parallel()
 
 	t.Run("it works", func(t *testing.T) {
-		chain := domain.KeyChain{
+		chain := key.KeyChain{
 			Private:      "foo",
 			Compressed:   "bar",
 			Uncompressed: "baz",

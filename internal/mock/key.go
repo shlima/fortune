@@ -8,7 +8,6 @@ import (
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
-	domain "github.com/shlima/fortune/internal/pkg/domain"
 	key "github.com/shlima/fortune/internal/pkg/key"
 )
 
@@ -36,10 +35,10 @@ func (m *MockKeygenerator) EXPECT() *MockKeygeneratorMockRecorder {
 }
 
 // Generate mocks base method.
-func (m *MockKeygenerator) Generate() (domain.KeyChain, error) {
+func (m *MockKeygenerator) Generate() (key.KeyChain, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Generate")
-	ret0, _ := ret[0].(domain.KeyChain)
+	ret0, _ := ret[0].(key.KeyChain)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }

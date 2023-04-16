@@ -53,6 +53,10 @@ func main() {
 				Name:   "generate",
 				Action: cmd.Generate,
 				Usage:  "random bitcoin address",
+			}, {
+				Name:   "brain",
+				Action: cmd.Brain,
+				Usage:  "generate brain wallet base on password first argument)",
 			},
 		},
 	}
