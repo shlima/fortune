@@ -27,6 +27,15 @@ func (f *Force) PassGen() pass.IGen {
 	return f.pass
 }
 
+func (f *Force) DataLength() int {
+	return len(f.index)
+}
+
+// Get tests the index with the passed address
+func (f *Force) Get(address string) bool {
+	return f.index[address]
+}
+
 func (f *Force) Generate(onFound func(chain key.KeyChain)) error {
 LOOP:
 	for {

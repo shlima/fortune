@@ -41,6 +41,8 @@ func brainForceHeartbit(c *cli.Context, force *brainforce.Force) {
 }
 
 func debugBrainforce(c *cli.Context, force *brainforce.Force) {
+	logger.Info(fmt.Sprintf("loaded: %d addresses", force.DataLength()))
+	logger.Info(fmt.Sprintf("test passed: %v", force.Get(c.String(FlagTestAddress.Name))))
 	logger.Info(fmt.Sprintf("possible permutations: %d", force.PassGen().Permutations()))
 	logger.Info(fmt.Sprintf("state: %s", pass.MarshallState(force.PassGen().Opts().State)))
 	logger.Info(fmt.Sprintf("password length: %d", force.PassGen().Opts().Length))
