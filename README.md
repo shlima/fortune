@@ -77,3 +77,18 @@ in the dataset as an argument:
 ```bash
 fortune bruteforce test 1LQoWist8KkaUXSPKZHNvEyfrEkPHzSsCd
 ```
+
+## Brain wallets
+
+To find a key from a rich bitcoin brain wallet using brute force method, 
+you can use the command `brainforce`
+
+```bash
+fortune brainforce 
+  --pass-length 5  # password length 
+  --pass-alphabet english-lower # one of "digits", "symbols", "english-lower", 
+                                # or "english-upper" (can take many arguments)
+  --pass-alphabet a,b,c # any characters separated by comma 
+  --pass-state "" # the end state from the previous run 
+                  # (to continue instead of starting all over again)                
+```
