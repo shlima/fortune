@@ -52,7 +52,7 @@ COMMANDS:
    help, h     Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
-   --file value [ --file value ]  a file with a custom dictionary (default: "addresses/Bitcoin/2023/04/p2pkh_Rich_Max_1.txt", "addresses/Bitcoin/2023/04/p2pkh_Rich_Max_10.txt", "addresses/Bitcoin/2023/04/p2pkh_Rich_Max_100.txt", "addresses/Bitcoin/2023/04/p2pkh_Rich_Max_1000.txt", "addresses/Bitcoin/2023/04/p2pkh_Rich_Max_10000.txt", "addresses/Bitcoin/2023/04/p2pkh_Rich_Max_100000.txt") [$FILE]
+   --file value [ --file value ]  dataset file with rich addresses (each compressed or uncompressed public address on a new line) (default: "addresses/Bitcoin/2023/04/p2pkh_Rich_Max_1.txt", "addresses/Bitcoin/2023/04/p2pkh_Rich_Max_10.txt", "addresses/Bitcoin/2023/04/p2pkh_Rich_Max_100.txt", "addresses/Bitcoin/2023/04/p2pkh_Rich_Max_1000.txt", "addresses/Bitcoin/2023/04/p2pkh_Rich_Max_10000.txt", "addresses/Bitcoin/2023/04/p2pkh_Rich_Max_100000.txt") [$FILE]
    --workers value                number of workers for parallel execution (default: 1) [$WORKERS]
    --night                        night or silent mode (reduced CPU usage) (default: false) [$NIGHT]
    --test-address value           address to test dataset before running brute force (default: "1LQoWist8KkaUXSPKZHNvEyfrEkPHzSsCd") [$TEST_ADDRESS]

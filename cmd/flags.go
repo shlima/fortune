@@ -39,7 +39,7 @@ var FlagNightMode = &cli.BoolFlag{
 
 var FlagFiles = &cli.StringSliceFlag{
 	Name:    "file",
-	Usage:   "a file with a custom dictionary",
+	Usage:   "dataset file with rich addresses (each compressed or uncompressed public address on a new line)",
 	EnvVars: []string{"FILE"},
 	Value: cli.NewStringSlice(
 		"addresses/Bitcoin/2023/04/p2pkh_Rich_Max_1.txt",
