@@ -47,7 +47,7 @@ COMMANDS:
    bruteforce  run bruteforce against the dataset of rich addresses
    random      prints random address from the dataset files
    generate    random bitcoin address
-   brain       generate brain wallet base on password first argument)
+   brain       generate brain wallet (based on password as a first argument) and check it's current balance online
    brainforce  run bruteforce with alphabetical passwords permutations against the dataset of rich addresses
    help, h     Shows a list of commands or help for one command
 
