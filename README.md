@@ -91,16 +91,16 @@ as well as the correctness of the rich addresses dataset files,
 run the `bruteforce` command with the public address in the 
 dataset as an argument.
 
-This will create a mock and allow you to check if the address
-exists in the dataset:
+This will create a key gen mock and allow you to check if 
+the address exists in the dataset:
 
 ```bash
 fortune bruteforce 1LQoWist8KkaUXSPKZHNvEyfrEkPHzSsCd
 ```
 
 To check the notification of a successful detection of a 
-brain wallet, you can also ьщсл the key generator based on 
-password:
+brain wallet, you can also mock the password base key 
+generator:
 
 ```bash
 # 1) generate a brain bitcoin address with password "foo"
