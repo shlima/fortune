@@ -11,31 +11,31 @@ import (
 	key "github.com/shlima/fortune/internal/pkg/key"
 )
 
-// MockKeygenerator is a mock of IGenerator interface.
-type MockKeygenerator struct {
+// MockKeygen is a mock of IGen interface.
+type MockKeygen struct {
 	ctrl     *gomock.Controller
-	recorder *MockKeygeneratorMockRecorder
+	recorder *MockKeygenMockRecorder
 }
 
-// MockKeygeneratorMockRecorder is the mock recorder for MockKeygenerator.
-type MockKeygeneratorMockRecorder struct {
-	mock *MockKeygenerator
+// MockKeygenMockRecorder is the mock recorder for MockKeygen.
+type MockKeygenMockRecorder struct {
+	mock *MockKeygen
 }
 
-// NewMockKeygenerator creates a new mock instance.
-func NewMockKeygenerator(ctrl *gomock.Controller) *MockKeygenerator {
-	mock := &MockKeygenerator{ctrl: ctrl}
-	mock.recorder = &MockKeygeneratorMockRecorder{mock}
+// NewMockKeygen creates a new mock instance.
+func NewMockKeygen(ctrl *gomock.Controller) *MockKeygen {
+	mock := &MockKeygen{ctrl: ctrl}
+	mock.recorder = &MockKeygenMockRecorder{mock}
 	return mock
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
-func (m *MockKeygenerator) EXPECT() *MockKeygeneratorMockRecorder {
+func (m *MockKeygen) EXPECT() *MockKeygenMockRecorder {
 	return m.recorder
 }
 
 // BrainSHA256 mocks base method.
-func (m *MockKeygenerator) BrainSHA256(password []byte) (key.KeyChain, error) {
+func (m *MockKeygen) BrainSHA256(password []byte) (key.KeyChain, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "BrainSHA256", password)
 	ret0, _ := ret[0].(key.KeyChain)
@@ -44,13 +44,13 @@ func (m *MockKeygenerator) BrainSHA256(password []byte) (key.KeyChain, error) {
 }
 
 // BrainSHA256 indicates an expected call of BrainSHA256.
-func (mr *MockKeygeneratorMockRecorder) BrainSHA256(password interface{}) *gomock.Call {
+func (mr *MockKeygenMockRecorder) BrainSHA256(password interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "BrainSHA256", reflect.TypeOf((*MockKeygenerator)(nil).BrainSHA256), password)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "BrainSHA256", reflect.TypeOf((*MockKeygen)(nil).BrainSHA256), password)
 }
 
 // Generate mocks base method.
-func (m *MockKeygenerator) Generate() (key.KeyChain, error) {
+func (m *MockKeygen) Generate() (key.KeyChain, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Generate")
 	ret0, _ := ret[0].(key.KeyChain)
@@ -59,21 +59,21 @@ func (m *MockKeygenerator) Generate() (key.KeyChain, error) {
 }
 
 // Generate indicates an expected call of Generate.
-func (mr *MockKeygeneratorMockRecorder) Generate() *gomock.Call {
+func (mr *MockKeygenMockRecorder) Generate() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Generate", reflect.TypeOf((*MockKeygenerator)(nil).Generate))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Generate", reflect.TypeOf((*MockKeygen)(nil).Generate))
 }
 
 // SetTesting mocks base method.
-func (m *MockKeygenerator) SetTesting(address string) key.IGenerator {
+func (m *MockKeygen) SetTesting(address string) key.IGen {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "SetTesting", address)
-	ret0, _ := ret[0].(key.IGenerator)
+	ret0, _ := ret[0].(key.IGen)
 	return ret0
 }
 
 // SetTesting indicates an expected call of SetTesting.
-func (mr *MockKeygeneratorMockRecorder) SetTesting(address interface{}) *gomock.Call {
+func (mr *MockKeygenMockRecorder) SetTesting(address interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetTesting", reflect.TypeOf((*MockKeygenerator)(nil).SetTesting), address)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetTesting", reflect.TypeOf((*MockKeygen)(nil).SetTesting), address)
 }

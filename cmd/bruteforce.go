@@ -11,25 +11,10 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-func BruteforceTest(c *cli.Context) error {
-	address := c.Args().First()
-	if address == "" {
-		return fmt.Errorf("please provide address in an argument")
-	}
-
-	force := bruteforce.New(
-		NewIndex(c),
-		NewKeyGen(c).SetTesting(address),
-		c.Int(FlagWorkers.Name),
-	)
-
-	return terror(c, force)
-}
-
 func Bruteforce(c *cli.Context) error {
 	force := bruteforce.New(
 		NewIndex(c),
-		NewKeyGen(c),
+		NewKeyGen(c).SetTesting(c.Args().First()),
 		c.Int(FlagWorkers.Name),
 	)
 

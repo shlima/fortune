@@ -13,7 +13,7 @@ import (
 
 type Executor struct {
 	index   datum.Index
-	gen     key.IGenerator
+	gen     key.IGen
 	workers int
 	sleep   time.Duration
 	ops     uint64
@@ -24,7 +24,7 @@ type Executor struct {
 	closes  []CloseCh
 }
 
-func New(index datum.Index, gen key.IGenerator, workers int) *Executor {
+func New(index datum.Index, gen key.IGen, workers int) *Executor {
 	return &Executor{
 		index:   index,
 		gen:     gen,

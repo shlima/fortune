@@ -11,13 +11,13 @@ import (
 
 type Setup struct {
 	ctrl *gomock.Controller
-	gen  *mock.MockKeygenerator
+	gen  *mock.MockKeygen
 	*Executor
 }
 
 func MustSetup(t *testing.T, index datum.Index) *Setup {
 	ctrl := gomock.NewController(t)
-	gen := mock.NewMockKeygenerator(ctrl)
+	gen := mock.NewMockKeygen(ctrl)
 
 	return &Setup{
 		ctrl:     ctrl,

@@ -1,9 +1,9 @@
 package key
 
-//go:generate mockgen -source types.go -destination ../../mock/key.go -package mock -mock_names IGenerator=MockKeygenerator
+//go:generate mockgen -source types.go -destination ../../mock/key.go -package mock -mock_names IGen=MockKeygen
 
-type IGenerator interface {
+type IGen interface {
 	Generate() (out KeyChain, err error)
-	SetTesting(address string) IGenerator
+	SetTesting(address string) IGen
 	BrainSHA256(password []byte) (out KeyChain, err error)
 }

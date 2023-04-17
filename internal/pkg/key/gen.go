@@ -19,7 +19,7 @@ func New() *Generator {
 	}
 }
 
-func (g *Generator) SetTesting(address string) IGenerator {
+func (g *Generator) SetTesting(address string) IGen {
 	g.testing = address
 	return g
 }

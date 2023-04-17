@@ -38,13 +38,6 @@ func main() {
 				Name:   "bruteforce",
 				Action: cmd.Bruteforce,
 				Usage:  "run bruteforce against the dataset of rich addresses",
-				Subcommands: []*cli.Command{
-					{
-						Name:   "test",
-						Usage:  "test 1LQoWist8KkaUXSPKZHNvEyfrEkPHzSsCd",
-						Action: cmd.BruteforceTest,
-					},
-				},
 			}, {
 				Name:   "random",
 				Action: cmd.Random,

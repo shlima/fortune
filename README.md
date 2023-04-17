@@ -67,17 +67,6 @@ COPYRIGHT:
    © github.com/shlima/fortune
 ```
 
-## Examination
-
-In order to check the correctness of the notifications, 
-as well as the correctness of the dictionaries with addresses, 
-run the `bruteforce test` command with the number of the wallet 
-in the dataset as an argument:
-
-```bash
-fortune bruteforce test 1LQoWist8KkaUXSPKZHNvEyfrEkPHzSsCd
-```
-
 ## Brain wallets
 
 To find a key from a rich bitcoin brain wallet using brute force method, 
@@ -91,4 +80,26 @@ fortune brainforce
   --pass-alphabet a,b,c # any characters separated by comma 
   --pass-state "" # the end state from the previous run 
                   # (to continue instead of starting all over again)                
+```
+
+## Examination
+
+In order to check the correctness of the notifications,
+as well as the correctness of the dictionaries with addresses,
+run the `bruteforce` command with the number of the wallet
+in the dataset as an argument:
+
+```bash
+fortune bruteforce 1LQoWist8KkaUXSPKZHNvEyfrEkPHzSsCd
+```
+
+To test a notification of a successful found brain wallet:
+
+```bash
+# 1) generate a brain bitcoin address with password "foo"
+fortune brain foo
+
+# 1) copy one of public address of brain wallet and 
+#    mock the index by adding this address as the first command argument
+fortune brainforce --pass-length 3 --pass-alphabet f,o 1LEH8BEZgC4onZ4GLm8UpZ3vXGAr6LYKST
 ```

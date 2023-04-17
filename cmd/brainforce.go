@@ -23,9 +23,10 @@ func BrainForce(c *cli.Context) error {
 	}
 
 	force := brainforce.New(
-		NewIndex(c),
-		NewKeyGen(c).SetTesting(c.Args().First()),
+		NewIndex(c).SetTesting(c.Args().First()),
+		NewKeyGen(c),
 		pass.New(opts),
+		c.Int(FlagWorkers.Name),
 	)
 
 	debugBrainforce(c, force)

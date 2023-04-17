@@ -21,3 +21,23 @@ func TestIndex_Random(t *testing.T) {
 		require.Equal(t, "", got)
 	})
 }
+
+func TestIndex_SetTesting(t *testing.T) {
+	t.Parallel()
+
+	t.Run("when empty", func(t *testing.T) {
+		t.Parallel()
+
+		index := Index{"foo": true}
+		got := index.SetTesting("")
+		require.Equal(t, index, got)
+	})
+
+	t.Run("when not", func(t *testing.T) {
+		t.Parallel()
+
+		index := Index{"foo": true}
+		got := index.SetTesting("bar")
+		require.Equal(t, Index{"bar": true}, got)
+	})
+}

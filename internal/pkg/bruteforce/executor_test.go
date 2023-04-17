@@ -1,11 +1,11 @@
 package bruteforce
 
 import (
-	"github.com/shlima/fortune/internal/pkg/key"
 	"testing"
 	"time"
 
 	"github.com/shlima/fortune/internal/pkg/datum"
+	"github.com/shlima/fortune/internal/pkg/key"
 	"github.com/stretchr/testify/require"
 )
 

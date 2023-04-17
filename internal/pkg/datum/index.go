@@ -28,3 +28,11 @@ LOOP:
 
 	return
 }
+
+func (i Index) SetTesting(address string) Index {
+	if address == "" {
+		return i
+	}
+
+	return Index{address: true}
+}
