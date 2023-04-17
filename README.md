@@ -14,10 +14,7 @@ found (guessed) keys.
 ```bash
 docker run ghcr.io/shlima/fortune \
     --workers 2 \
-    --heartbit-sec 3600 \
-    --telegram-ping-sec 21600 \
-    --telegram-token "botfather token" \
-    --telegram-channel "@channel" \
+    --heartbit-sec 60 \
     bruteforce # or brainforce 
 ```
 
