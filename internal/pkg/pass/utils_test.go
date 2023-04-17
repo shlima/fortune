@@ -31,3 +31,12 @@ func TestUnmarshalState(t *testing.T) {
 		require.Equal(t, []int{1, 2}, got)
 	})
 }
+
+func TestMarshallAlphabet(t *testing.T) {
+	t.Parallel()
+
+	t.Run("it works", func(t *testing.T) {
+		got := MarshallAlphabet([]string{"a", "b"})
+		require.Equal(t, "ab", got)
+	})
+}

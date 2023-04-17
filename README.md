@@ -77,7 +77,7 @@ fortune brainforce
   --pass-length 5  # password length 
   --pass-alphabet english-lower # one of "digits", "symbols", "english-lower", 
                                 # or "english-upper" (can take many arguments)
-  --pass-alphabet a,b,c # any characters separated by comma 
+  --pass-alphabet abc # any characters without separator
   --pass-state "" # the end state from the previous run 
                   # (to continue instead of starting all over again)                
 ```
@@ -101,5 +101,5 @@ fortune brain foo
 
 # 1) copy one of public address of brain wallet and 
 #    mock the index by adding this address as the first command argument
-fortune brainforce --pass-length 3 --pass-alphabet f,o 1LEH8BEZgC4onZ4GLm8UpZ3vXGAr6LYKST
+fortune brainforce --pass-length 3 --pass-alphabet fo 1LEH8BEZgC4onZ4GLm8UpZ3vXGAr6LYKST
 ```

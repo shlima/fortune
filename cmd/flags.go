@@ -67,7 +67,7 @@ var FlagPassLength = &cli.IntFlag{
 
 var FlagPassAlphabet = &cli.StringSliceFlag{
 	Name:    "pass-alphabet",
-	Usage:   fmt.Sprintf("one of %s or any characters separated by comma", strings.Join(lo.Keys(pass.Dictionary), ", ")),
+	Usage:   fmt.Sprintf("one of %s or any characters without separator", strings.Join(lo.Keys(pass.Dictionary), ", ")),
 	EnvVars: []string{"ALPHABET"},
 	Value:   cli.NewStringSlice(lo.Keys(pass.Dictionary)...),
 }

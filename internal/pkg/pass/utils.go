@@ -16,7 +16,7 @@ func MakeOutput(alphabet []string, state []int) string {
 }
 
 func MarshallAlphabet(in []string) string {
-	return strings.Join(in, ",")
+	return strings.Join(in, "")
 }
 
 func MarshallState(in []int) string {
