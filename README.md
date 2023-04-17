@@ -14,7 +14,7 @@ found (guessed) keys.
 ```bash
 docker run ghcr.io/shlima/fortune \
     --workers 2 \
-    --heartbit-sec 60 \
+    --heartbit-sec 1 \
     bruteforce # or brainforce 
 ```
 
