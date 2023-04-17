@@ -20,7 +20,7 @@ var FlagHeartBeatSec = &cli.IntFlag{
 	Name:    "heartbit-sec",
 	Usage:   "print status each N seconds to STDOUT",
 	EnvVars: []string{"HEARTBEAT_SEC"},
-	Value:   10,
+	Value:   1,
 }
 
 var FlagTestAddress = &cli.StringFlag{
