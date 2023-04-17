@@ -5,7 +5,7 @@
 Cracker of bitcoin addresses (p2pkh private keys) by brute forcing 
 and brain forcing (includes dataset of **323,156** wallets with non-zero balance).
 
-Notifies you in Telegram about the generation process and
+Notifies you in Telegram about the process and
 found (guessed) keys.
 
 ![btc cracker telegram screenshot](/docs/screenshot.webp?raw=true)
