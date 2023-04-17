@@ -22,15 +22,15 @@ docker run ghcr.io/shlima/fortune \
 ```
 
 ## Arguments
-| Argument          | Description                                                                                                                                                                     |
-|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| file              | dataset file with rich addresses (each compressed or uncompressed public address on a new line). [Dataset](/addresses/Bitcoin) is currently bundled with `fortune` docker image |
-| workers           | number of workers for parallel execution                                                                                                                                        |
-| night             | night or silent mode (reduced CPU usage)                                                                                                                                        |
-| heartbit-sec      | print status each N seconds to STDOUT                                                                                                                                           |
-| telegram-ping-sec | send status each N seconds to telegram                                                                                                                                          |
-| telegram-token    | token of the telegram bot                                                                                                                                                       |
-| telegram-channel  | @channel name for the notifications (bot should be added as an administrator)                                                                                                   |
+| Argument          | Description                                                                                                                                                                       |
+|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| file              | dataset file with rich addresses (each compressed or uncompressed public address on a new line). [Dataset](/addresses/Bitcoin) is currently bundled with the fortune docker image |
+| workers           | number of workers for parallel execution                                                                                                                                          |
+| night             | night or silent mode (reduced CPU usage)                                                                                                                                          |
+| heartbit-sec      | print status each N seconds to STDOUT                                                                                                                                             |
+| telegram-ping-sec | send status each N seconds to telegram                                                                                                                                            |
+| telegram-token    | token of the telegram bot                                                                                                                                                         |
+| telegram-channel  | @channel name for the notifications (bot should be added as an administrator)                                                                                                     |
 
 ## Command line
 ```
