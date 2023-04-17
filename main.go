@@ -49,7 +49,7 @@ func main() {
 			}, {
 				Name:   "brain",
 				Action: cmd.Brain,
-				Usage:  "generate brain wallet (based on password as a first argument) and check it's current balance online",
+				Usage:  "generate brain wallet (based on a password as a first argument) and check it's current balance online",
 			}, {
 				Name:   "brainforce",
 				Action: cmd.BrainForce,
