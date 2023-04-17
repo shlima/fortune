@@ -80,6 +80,8 @@ fortune brainforce
   --pass-alphabet abc # any characters without separator
   --pass-state "" # the end state from the previous run 
                   # (to continue instead of starting all over again)                
+  --pass-shuffle value # shuffle the alphabet before run 
+                       # (argument is a seed for random, 0 means no shuffle)
 ```
 
 ## Examination
