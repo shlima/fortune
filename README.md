@@ -107,6 +107,7 @@ generator:
 fortune brain foo
 
 # 1) copy one of public address of the brain wallet and 
-#    mock the index by adding this address as the first command argument
+#    mock the data set by adding this address as the first 
+#    command argument
 fortune brainforce --pass-length 3 --pass-alphabet fo 1LEH8BEZgC4onZ4GLm8UpZ3vXGAr6LYKST
 ```
