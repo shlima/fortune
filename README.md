@@ -3,7 +3,7 @@
 [![Test](https://github.com/shlima/fortune/actions/workflows/test.yml/badge.svg)](https://github.com/shlima/fortune/actions/workflows/test.yml)
 
 Cracker of bitcoin addresses (p2pkh private keys) by brute forcing 
-(includes dataset of **323,156** wallets with non-zero balance).
+and brain forcing (includes dataset of **323,156** wallets with non-zero balance).
 
 Notifies you in Telegram about the generation process and
 found (guessed) keys.
