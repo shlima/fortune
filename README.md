@@ -18,13 +18,13 @@ docker run ghcr.io/shlima/fortune \
     --telegram-ping-sec 21600 \
     --telegram-token "botfather token" \
     --telegram-channel "@channel" \
-    bruteforce   
+    bruteforce # or brainforce 
 ```
 
 ## Arguments
 | Argument          | Description                                                                               |
 |-------------------|-------------------------------------------------------------------------------------------|
-| file              | file with a custom dictionary (each public address on a new line) can take many arguments |
+| file              | dataset file with rich addresses (each compressed or uncompressed public address on a new line) |
 | workers           | number of workers for parallel execution                                                  |
 | night             | night or silent mode (reduced CPU usage)                                                  |
 | heartbit-sec      | print status each N seconds to STDOUT                                                     |
