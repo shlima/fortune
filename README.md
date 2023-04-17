@@ -12,10 +12,8 @@ found (guessed) keys.
 
 ### Docker
 ```bash
-docker run ghcr.io/shlima/fortune \
-    --workers 2 \
-    --heartbit-sec 1 \
-    bruteforce # or brainforce 
+docker run ghcr.io/shlima/fortune --workers 2 --heartbit-sec 1 bruteforce
+docker run ghcr.io/shlima/fortune --workers 2 --heartbit-sec 1 brainforce --pass-shuffle 3434
 ```
 
 ## Arguments
