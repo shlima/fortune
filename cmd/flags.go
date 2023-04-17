@@ -74,7 +74,7 @@ var FlagPassAlphabet = &cli.StringSliceFlag{
 
 var FlagPassShuffle = &cli.Int64Flag{
 	Name:    "pass-shuffle",
-	Usage:   "shuffle the alphabet before run (argument is a random seed, 0 means no shuffle)",
+	Usage:   "shuffle the alphabet before run (argument is a seed for random, 0 means no shuffle)",
 	EnvVars: []string{"PASS_SHUFFLE"},
 	Value:   0,
 }
