@@ -1,6 +1,7 @@
 package pass
 
 import (
+	"math/rand"
 	"strings"
 
 	"github.com/samber/lo"
@@ -31,4 +32,18 @@ func ParseAlphabets(in []string) []string {
 	}
 
 	return lo.Uniq(out)
+}
+
+func ShuffleIfNonZero(in []string, seed int64) []string {
+	if seed == 0 {
+		return in
+	}
+
+	out := append(make([]string, 0), in...)
+	r := rand.New(rand.NewSource(seed))
+	r.Shuffle(len(out), func(i, j int) {
+		out[i], out[j] = out[j], out[i]
+	})
+
+	return out
 }

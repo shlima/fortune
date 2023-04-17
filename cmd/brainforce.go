@@ -17,9 +17,12 @@ func BrainForce(c *cli.Context) error {
 	}
 
 	opts := pass.GenOpts{
-		Alphabet: pass.ParseAlphabets(c.StringSlice(FlagPassAlphabet.Name)),
-		State:    state,
-		Length:   c.Int(FlagPassLength.Name),
+		Alphabet: pass.ShuffleIfNonZero(
+			pass.ParseAlphabets(c.StringSlice(FlagPassAlphabet.Name)),
+			c.Int64(FlagPassShuffle.Name),
+		),
+		State:  state,
+		Length: c.Int(FlagPassLength.Name),
 	}
 
 	force := brainforce.New(

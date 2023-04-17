@@ -34,3 +34,28 @@ func TestParseAlphabets(t *testing.T) {
 		require.Equal(t, []string{"a", ",", "1"}, got)
 	})
 }
+
+func TestShuffleIfNonZero(t *testing.T) {
+	t.Parallel()
+
+	t.Run("it do nothing if zero", func(t *testing.T) {
+		t.Parallel()
+
+		in := EnglishUpper
+		got := ShuffleIfNonZero(in, 0)
+		require.Equal(t, got, in)
+	})
+
+	t.Run("it works with the same seed", func(t *testing.T) {
+		t.Parallel()
+
+		in := EnglishUpper
+		got01 := ShuffleIfNonZero(in, 1)
+		got02 := ShuffleIfNonZero(in, 1)
+
+		require.NotEqual(t, got01, in)
+		require.NotEqual(t, got02, in)
+
+		require.Equal(t, got01, got02)
+	})
+}

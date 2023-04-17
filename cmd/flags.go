@@ -68,6 +68,13 @@ var FlagPassLength = &cli.IntFlag{
 var FlagPassAlphabet = &cli.StringSliceFlag{
 	Name:    "pass-alphabet",
 	Usage:   fmt.Sprintf("one of %s or any characters without separator", strings.Join(lo.Keys(pass.Dictionary), ", ")),
-	EnvVars: []string{"ALPHABET"},
+	EnvVars: []string{"PASS_ALPHABET"},
 	Value:   cli.NewStringSlice(lo.Keys(pass.Dictionary)...),
+}
+
+var FlagPassShuffle = &cli.Int64Flag{
+	Name:    "pass-shuffle",
+	Usage:   "shuffle the alphabet before run (argument is a random seed, 0 means no shuffle)",
+	EnvVars: []string{"PASS_SHUFFLE"},
+	Value:   0,
 }

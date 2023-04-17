@@ -58,6 +58,7 @@ func main() {
 					cmd.FlagPassState,
 					cmd.FlagPassLength,
 					cmd.FlagPassAlphabet,
+					cmd.FlagPassShuffle,
 				},
 			},
 		},
