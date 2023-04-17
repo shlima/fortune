@@ -19,7 +19,7 @@ docker run ghcr.io/shlima/fortune --workers 2 --heartbit-sec 1 brainforce --pass
 ## Arguments
 | Argument          | Description                                                                                                                                                                         |
 |-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| file              | dataset file with rich addresses (each compressed or uncompressed public address on a new line). Dataset is currently bundled with the `fortune` docker image |
+| file              | dataset file with bitcoin rich addresses (each compressed or uncompressed public address on a new line). Dataset is currently bundled with the `fortune` docker image |
 | workers           | number of workers for parallel execution                                                                                                                                            |
 | night             | night or silent mode (reduced CPU usage)                                                                                                                                            |
 | heartbit-sec      | print status each N seconds to STDOUT                                                                                                                                               |
