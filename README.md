@@ -87,15 +87,20 @@ fortune brainforce
 ## Examination
 
 In order to check the correctness of the notifications,
-as well as the correctness of the dictionaries with addresses,
-run the `bruteforce` command with the number of the wallet
-in the dataset as an argument:
+as well as the correctness of the rich addresses dataset files,
+run the `bruteforce` command with the public address in the 
+dataset as an argument.
+
+This will create a mock and allow you to check if the address
+exists in the dataset:
 
 ```bash
 fortune bruteforce 1LQoWist8KkaUXSPKZHNvEyfrEkPHzSsCd
 ```
 
-To test a notification of a successful found brain wallet:
+To check the notification of a successful detection of a 
+brain wallet, you can also ьщсл the key generator based on 
+password:
 
 ```bash
 # 1) generate a brain bitcoin address with password "foo"
