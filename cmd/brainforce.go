@@ -50,7 +50,7 @@ func debugBrainforce(c *cli.Context, force *brainforce.Force) {
 	logger.Info(fmt.Sprintf("possible permutations: %d", force.PassGen().Permutations()))
 	logger.Info(fmt.Sprintf("state: %s", pass.MarshallState(force.PassGen().Opts().State)))
 	logger.Info(fmt.Sprintf("password length: %d", force.PassGen().Opts().Length))
-	logger.Info(fmt.Sprintf("alphabet: %s", pass.MarshallAlphabet(force.PassGen().Opts().Alphabet)))
+	logger.Info(fmt.Sprintf("alphabet: <%s>", pass.MarshallAlphabet(force.PassGen().Opts().Alphabet)))
 	logger.Info(fmt.Sprintf("alphabet size: %d", len(force.PassGen().Opts().Alphabet)))
 	logger.Info(fmt.Sprintf("telegram enabled: %v", NewTelegram(c).IsReal()))
 }
