@@ -12,7 +12,7 @@ type HeartBit struct {
 
 func (h *HeartBit) ToString() string {
 	return fmt.Sprintf(
-		"tried %d passwords done %.4f%% (%d ops/sec), current one: <%s>, state: %s",
+		"tried %d passwords %.4f%% (%d ops/sec), current one: <%s>, state: %s",
 		h.Tried, h.DonePct, h.IOps, h.Password, h.State,
 	)
 }
