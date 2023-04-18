@@ -52,7 +52,7 @@ func (g *Gen) Opts() GenOpts {
 
 // Permutations possible number of password variants
 func (g *Gen) Permutations() uint64 {
-	return uint64(math.Pow(float64(len(g.Alphabet)), float64(g.Length)))
+	return Permutations(len(g.Alphabet), g.Length)
 }
 
 // All generates all possible combinations
@@ -115,6 +115,7 @@ func (g *Gen) Heartbeat() *HeartBit {
 		Password: MakeOutput(g.Alphabet, g.State),
 		State:    MarshallState(g.State),
 		IOps:     uint64(math.Round(float64(tried-g.prev) / t1.Sub(g.t0).Seconds())),
+		DonePct:  DonePct(g.State, len(g.Alphabet)),
 	}
 
 	g.prev = tried
