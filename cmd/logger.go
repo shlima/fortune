@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"io/ioutil"
+	"io"
 	"log"
 
 	"github.com/google/logger"
@@ -9,7 +9,7 @@ import (
 )
 
 func InitLogger(c *cli.Context) error {
-	logger.Init(c.App.Name, true, true, ioutil.Discard)
+	logger.Init(c.App.Name, true, false, io.Discard)
 	logger.SetLevel(logger.Level(0))
 	logger.SetFlags(log.LstdFlags)
 

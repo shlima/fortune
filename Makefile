@@ -6,20 +6,17 @@ test:
 	go test -timeout=5s -count=1 -p 4 -race -covermode=atomic -coverprofile=coverage.out ./...
 
 linux:
-	env GOOS=linux GOARCH=amd64 CGO_ENABLED=0 \
-	go build -buildvcs=false \
-	-ldflags "-s -X 'main.Version=$(VERSION)'" \
-	-a \
-	-installsuffix cgo \
-	-o build/linux
-
-mac:
-	env GOOS=darwin GOARCH=amd64 CGO_ENABLED=0 \
+	env GOOS=linux GOARCH=amd64 \
 	go build \
 	-buildvcs=false \
 	-ldflags "-s -X 'main.Version=$(VERSION)'" \
-	-a \
-	-installsuffix cgo \
+	-o build/linux
+
+mac:
+	env GOOS=darwin GOARCH=amd64 \
+	go build \
+	-buildvcs=false \
+	-ldflags "-s -X 'main.Version=$(VERSION)'" \
 	-o build/mac
 
 .PHONY: build

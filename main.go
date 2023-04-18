@@ -18,8 +18,9 @@ func main() {
 	app := &cli.App{
 		Name:      "fortune",
 		Usage:     "bitcoin wallet cracker",
-		Version:   Version,
 		Copyright: "© github.com/shlima/fortune",
+		Version:   Version,
+		Suggest:   true,
 		Flags: []cli.Flag{
 			cmd.FlagFiles,
 			cmd.FlagWorkers,
